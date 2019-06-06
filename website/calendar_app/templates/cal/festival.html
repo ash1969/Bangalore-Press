@@ -1,0 +1,36 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+About Today
+{% endblock %}
+
+{% block content %}
+<div class="clearfix">
+  <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> << Back </a>
+</div>
+<table style="width:100%">
+<tr>
+    <td style="width: 70%"><img src="{{ festival.image.url }}" height="400" width="1000" style="padding-left:40px"></td>
+    <td style="width: 30%">
+      <ul style="list-style-type: none">
+        <li><h2>{{ festival.name }}</h2></li>
+        <br>
+        <li>Date : {{ festival.date }}</li>
+        <li>Upto : {{ festival.tithi }}</li>
+        <li>Masa : {{ festival.masa }}</li>
+        <li>Paksha : {{ festival.paksha }}</li>
+        <li>Tithi : {{festival.tithi_name }}</li>
+        <li>Nakshtra : {{festival.nakshtra_name }}</li>
+        <li>Sowra : {{ festival.sowra }}</li>
+        <li>Muhammadan : {{ festival.muhammadan }}</li>
+        <li>Rahukala : {{ festival.rahukala_start }} - {{ festival.rahukala_end }}</li>
+      </ul>
+    </td>
+</tr>
+</table>
+<br>
+<p style="padding-left:40px; padding-right:40px;">{{ festival.description }}</p>
+<br>
+<br>
+
+{% endblock %}

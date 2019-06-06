@@ -1,0 +1,20 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+May we have your Introduction?
+{% endblock %}
+
+{% block content %}
+<div align="center">
+     <br>
+        <form method="POST">
+          {% csrf_token %}
+          <table>
+              {{ form }}
+          </table>
+              <br>
+          <button type="submit" class="save btn btn-primary" style="margin-left:150px;"> SIGN UP > </button>
+        </form>
+</div>
+
+{% endblock %}

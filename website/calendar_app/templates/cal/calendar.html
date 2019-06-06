@@ -1,0 +1,26 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Panchanga | My Calendar
+{% endblock %}
+
+{% block content %}
+<div class="clearfix">
+	<a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ prev_month }}"> < Prev </a>
+	<a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next > </a>
+</div>
+{{ calendar }}
+
+<table align="center">
+	<h3 align="center">Special Upcoming Dates</h3>
+	{% for festival in festivals_display %}
+	<tr>
+		<td> {{ festival.date }} </td>
+		<td><a href="{% url 'cal:upcoming_festival' festival.id  %}"> {{ festival.name }} </a></td>
+	</tr>
+	{% endfor %}
+</table>
+<br>
+<br>
+
+{% endblock %}
