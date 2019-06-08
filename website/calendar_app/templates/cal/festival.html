@@ -10,8 +10,8 @@ About Today
 </div>
 <table style="width:100%">
 <tr>
-    <td style="width: 70%"><img src="{{ festival.image.url }}" height="400" width="1000" style="padding-left:40px"></td>
-    <td style="width: 30%">
+    <td style="width : 70%"><img class="responsive" width="800" height="200" src="{{ festival.image.url }}"  style="padding-left:40px"></td>
+    <td style="width : 30%" >
       <ul style="list-style-type: none">
         <li><h2>{{ festival.name }}</h2></li>
         <br>
@@ -23,7 +23,7 @@ About Today
         <li>Nakshtra : {{festival.nakshtra_name }}</li>
         <li>Sowra : {{ festival.sowra }}</li>
         <li>Muhammadan : {{ festival.muhammadan }}</li>
-        <li>Rahukala : {{ festival.rahukala_start }} - {{ festival.rahukala_end }}</li>
+        <li>Rahukala : {{ festival.rahukala_end }}</li>
       </ul>
     </td>
 </tr>
