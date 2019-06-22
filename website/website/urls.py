@@ -27,4 +27,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('cal/', include('calendar_app.urls')),
     path('profile/',include('user_profile.urls',namespace='user_profile')),
+    path('feed/',include('news_feed.urls',namespace='news_feed')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,27 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}
+News Feed
+{% endblock %}
+
+{% block content %}
+<div align="center">
+     <br>
+       {% for post in posts %}
+          <div class="card" style="width: 18rem; margin:10px;">
+             <p style="text-align:left; padding:2px;">{{ post.user.username }}</p>
+             <small style="text-align:left; padding:2px;">{{ post.updated_at }}</small>
+             {% if post.user == request.user %}
+              <a href="{% url 'news_feed:edit_post' post.id  %}" style="text-align:right;" class="fa fa-edit"></a>
+             {% endif %}
+             <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-title fa fa-camera">&nbsp{{ post.get_cname }}</p>
+                  <p class="card-text">{{ post.caption }}</p>
+                  <a href="{% url 'news_feed:edit_voting' post.id  %}" class="btn btn-primary fa fa-thumbs-up">&nbsp{{ post.like_count }}</a>
+                </div>
+           </div>
+       {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+What is in your mind?
+{% endblock %}
+
+{% block content %}
+<div align="center">
+     <br>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <table>
+              {{ form }}
+          </table>
+              <br>
+          <button type="submit" class="save btn btn-primary" style="margin-left:150px;"> POST > </button>
+        </form>
+</div>
+
+{% endblock %}
