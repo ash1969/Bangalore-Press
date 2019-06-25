@@ -15,15 +15,30 @@ About Today
       <ul style="list-style-type: none">
         <li><h2>{{ festival.name }}</h2></li>
         <br>
+        {% if festival.date %}
         <li>Date : {{ festival.date }}</li>
-        <li>Upto : {{ festival.tithi }}</li>
-        <li>Masa : {{ festival.masa }}</li>
+        {% endif %}
+        {% if festival.paksha %}
         <li>Paksha : {{ festival.paksha }}</li>
-        <li>Tithi : {{festival.tithi_name }}</li>
-        <li>Nakshtra : {{festival.nakshtra_name }}</li>
+        {% endif %}
+        {% if festival.tithi %}
+        <li>Tithi : {{ festival.tithi }}</li>
+        {% endif %}
+        {% if festival.maasa %}
+        <li>Maasa : {{ festival.maasa }}</li>
+        {% endif %}
+        {% if festival.nakshtra %}
+        <li>Nakshtra : {{ festival.nakshtra }}</li>
+        {% endif %}
+        {% if festival.sowra %}
         <li>Sowra : {{ festival.sowra }}</li>
-        <li>Muhammadan : {{ festival.muhammadan }}</li>
-        <li>Rahukala : {{ festival.rahukala_end }}</li>
+        {% endif %}
+        {% if festival.muhammadan %}
+        <li>Sowra : {{ festival.muhammadan }}</li>
+        {% endif %}
+        {% if festival.rahukaala_start %}
+        <li>Rahukaala : {{ festival.rahukaala_start }}-{{ festival.rahukaala_end }}</li>
+        {% endif %}
       </ul>
     </td>
 </tr>
