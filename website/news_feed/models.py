@@ -15,7 +15,7 @@ def content_file_name(instance,filename):
 	return os.path.join('images/',filename)
 
 class Post(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     caption = models.CharField(max_length=100)
     image = models.ImageField(upload_to=content_file_name)
     category_choices = (
