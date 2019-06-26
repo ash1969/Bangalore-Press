@@ -6,11 +6,12 @@ from django.views import generic
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 import calendar
-
+from .forms import *
 from .models import *
 from .utils import Calendar
-
+import requests
 from django.utils import timezone
+import json
 
 def home(request):
     args={}
@@ -64,3 +65,40 @@ def festival_detail(request, event_id=None):
     except:
         return HttpResponse("Id Does Not Exist!")
     return render(request, 'cal/festival.html', {'festival': instance})
+
+def geo(request):
+    form = Locationform(request.POST or None)
+
+    if request.method == 'POST':
+       if request.POST.get('ajax_check') == "True":
+         if form.is_valid():
+            key = form.cleaned_data
+            city = key.get('location')
+            url = 'https://weather.cit.api.here.com/weather/1.0/report.json'
+
+            parameters = dict(
+                product='forecast_astronomy',
+                name=city,
+                app_id='cTqOSjbtmgQB1XGtr5SB',
+                app_code='9tCOayrEASzoc6cLYeK_wQ'
+            )
+
+            response = requests.get(url=url, params=parameters)
+            data = response.json()
+
+            x = "Type" in data
+            if x == True:
+                return HttpResponse("No City Found")
+            else:
+                print(data)
+
+                # Calculations
+                #
+                #
+                #
+                #
+                # Calculations
+
+                return HttpResponse("Success")
+
+    return render(request, 'cal/geo.html', {'form': form, })

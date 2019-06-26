@@ -1,0 +1,60 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Hello, your day today!
+{% endblock %}
+
+{% block content %}
+<div align="center">
+     <br>
+        <form class="my-ajax-form" method="POST"  data-url='{{ request.build_absolute_uri|safe }}'>
+          {% csrf_token %}
+          <table>
+              {{ form }}
+          </table>
+              <input type="hidden" name="ajax_check" value="True">
+              <br>
+          <button type="submit" class="save btn btn-primary" style="margin-left:150px;"> CHANGE </button>
+        </form>
+     <div>
+         <span id="contents"></span>
+     </div>
+</div>
+
+{% endblock %}
+{% block script %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var $myForm = $('.my-ajax-form')
+        $myForm.submit(function(event){
+            event.preventDefault()
+            var $formData = $(this).serialize()
+            console.log($formData)
+            var $thisURL = $myForm.attr('data-url')
+
+            $.ajax({
+                method: "POST",
+                url: $thisURL,
+                data: $formData,
+                success: handleFormSuccess,
+                error: handleFormError,
+            })
+        })
+
+         function handleFormSuccess(data, textStatus, jqXHR){
+            console.log(data)
+            console.log(textStatus)
+            console.log(jqXHR)
+            $("#contents").html(data)
+
+        }
+        function handleFormError(jqXHR, textStatus, errorThrown){
+            console.log(jqXHR)
+            console.log(textStatus)
+            console.log(errorThrown)
+        }
+    })
+</script>
+{% endblock %}
