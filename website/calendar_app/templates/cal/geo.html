@@ -16,8 +16,35 @@ Hello, your day today!
               <br>
           <button type="submit" class="save btn btn-primary" style="margin-left:150px;"> CHANGE </button>
         </form>
+        <br>
      <div>
-         <span id="contents"></span>
+         <span id="sunrise"></span>
+     </div>
+     <div>
+         <span id="sunset"></span>
+     </div>
+     <div>
+         <span id="moonrise"></span>
+     </div>
+     <div>
+         <span id="moonset"></span>
+     </div>
+     <br>
+     <div>
+         <span id="state"></span>
+     </div>
+     <div>
+         <span id="country"></span>
+     </div>
+     <br>
+     <div>
+         <span id="latitude"></span>
+     </div>
+     <div>
+         <span id="longitude"></span>
+     </div>
+     <div>
+         <span id="timezone"></span>
      </div>
 </div>
 
@@ -47,7 +74,23 @@ Hello, your day today!
             console.log(data)
             console.log(textStatus)
             console.log(jqXHR)
-            $("#contents").html(data)
+            if(data == "No City Found")
+            {
+             $("#sunrise").html(data)
+            }
+            else
+            {
+             var Data = JSON.parse(data)
+             $("#sunrise").html("Sunrise: "+Data.sunrise)
+             $("#sunset").html("Sunset: "+Data.sunset)
+             $("#moonrise").html("Moonrise: "+Data.moonrise)
+             $("#moonset").html("Moonset: "+Data.moonset)
+             $("#state").html("State: "+Data.state)
+             $("#country").html("Country: "+Data.country)
+             $("#latitude").html("Latitude: "+Data.latitude)
+             $("#longitude").html("Longitude: "+Data.longitude)
+             $("#timezone").html("Timezone: "+Data.timezone)
+            }
 
         }
         function handleFormError(jqXHR, textStatus, errorThrown){

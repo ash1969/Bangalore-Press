@@ -99,6 +99,16 @@ def geo(request):
                 #
                 # Calculations
 
-                return HttpResponse("Success")
+                return HttpResponse(json.dumps({
+                    'sunrise': data['astronomy']['astronomy'][0]['sunrise'],
+                    'sunset': data['astronomy']['astronomy'][0]['sunset'],
+                    'moonrise': data['astronomy']['astronomy'][0]['moonrise'],
+                    'moonset': data['astronomy']['astronomy'][0]['moonset'],
+                    'country': data['astronomy']['country'],
+                    'state': data['astronomy']['state'],
+                    'timezone': data['astronomy']['timezone'],
+                    'latitude': data['astronomy']['latitude'],
+                    'longitude': data['astronomy']['longitude'],
+                }))
 
     return render(request, 'cal/geo.html', {'form': form, })
