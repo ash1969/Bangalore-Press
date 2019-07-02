@@ -10,7 +10,7 @@ News Feed
        {% for post in posts %}
           <div class="card" style="width: 18rem; margin:10px;">
              <p style="text-align:left; padding:2px;">{{ post.user.username }}</p>
-             <small style="text-align:left; padding:2px;">{{ post.updated_at }}</small>
+             <small style="text-align:left; padding:2px;">{{ post.updated_at.date }}</small>
              {% if post.user == request.user %}
               <a href="{% url 'news_feed:edit_post' post.id  %}" style="text-align:right;" class="fa fa-edit"></a>
              {% endif %}

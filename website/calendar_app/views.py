@@ -73,7 +73,7 @@ def geo(request):
        if request.POST.get('ajax_check') == "True":
          if form.is_valid():
             key = form.cleaned_data
-            city = key.get('location')
+            city = key.get('Enter_your_location')
             url = 'https://weather.cit.api.here.com/weather/1.0/report.json'
 
             parameters = dict(
@@ -85,7 +85,7 @@ def geo(request):
 
             response = requests.get(url=url, params=parameters)
             data = response.json()
-
+            print(data)
             x = "Type" in data
             if x == True:
                 return HttpResponse("No City Found")

@@ -31,7 +31,7 @@ def open_feed(request):
     current_date = timezone.now()
     start_date = current_date + timedelta(days=-2)
     end_date = current_date + timedelta(days=4)  # Using this to display posts
-    posts = Post.objects.filter(updated_at__range=[start_date, end_date]).order_by('updated_at')
+    posts = Post.objects.filter(updated_at__range=[start_date, end_date]).order_by('-updated_at')
     upvotes = Upvotes.objects.all()
     profiles = Profile.objects.all()
     args = {'posts': posts, 'upvotes': upvotes, 'profiles': profiles }
