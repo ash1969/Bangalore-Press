@@ -46,6 +46,29 @@ BappCo-IIITB-CulKey
      <div>
          <span id="timezone"></span>
      </div>
+    <br>
+    <div>
+         <span id="date"></span>
+    </div>
+    <br>
+    <div>
+         <span id="raahu_s"></span>
+     </div>
+     <div>
+         <span id="raahu_e"></span>
+     </div>
+    <div>
+         <span id="gulika_s"></span>
+     </div>
+     <div>
+         <span id="gulika_e"></span>
+     </div>
+    <div>
+         <span id="yama_s"></span>
+     </div>
+     <div>
+         <span id="yama_e"></span>
+     </div>
 </div>
 
 {% endblock %}
@@ -90,6 +113,13 @@ BappCo-IIITB-CulKey
              $("#latitude").html("Latitude: "+Data.latitude)
              $("#longitude").html("Longitude: "+Data.longitude)
              $("#timezone").html("Timezone: GMT+"+Data.timezone)
+             $("#date").html("Kaala: "+Data.date)
+             $("#gulika_s").html("Gulika Kaala starts at: "+Data.gulika_kaala_s)
+             $("#gulika_e").html("Gulika Kaala ends at: "+Data.gulika_kaala_e)
+             $("#raahu_s").html("Rahu Kaala starts at: "+Data.raahu_kaala_s)
+             $("#raahu_e").html("Rahu Kaala ends at: "+Data.raahu_kaala_e)
+             $("#yama_s").html("Yama Ghanta starts at: "+Data.yama_kaala_s)
+             $("#yama_e").html("Yama Ghanta ends at: "+Data.yama_kaala_e)
             }
 
         }
